@@ -1,13 +1,25 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <router-view />
+    <button @click="chooseLang('zh')">中文</button>
+    <button @click="chooseLang('en')">English</button>
   </div>
 </template>
-
+<script>
+export default {
+  name: "Home",
+  components: {},
+  mounted() {
+    // 在控制台调用Vue实例内部方法 vue.chooseLang("zh")
+    window.vue = this;
+  },
+  methods: {
+    chooseLang(langType) {
+      this.$i18n.locale = langType;
+    },
+  },
+};
+</script>
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
